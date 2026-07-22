@@ -44,6 +44,7 @@ See **[STACK.md](STACK.md)** for the full list and *why* each tool. The short ve
 | Captions | **ElevenLabs Scribe** | Word-level transcription → styled subtitles |
 | Graphics | **Python + Pillow (PIL)** | End cards, captions, mascot animation, frame compositing |
 | Motion graphics | **HyperFrames** *(HTML/CSS/GSAP)* | Web-authored motion overlays — **alternative: [Remotion](https://www.remotion.dev/)** (React) |
+| AI b-roll | **[Higgsfield](https://higgsfield.ai/)** (MCP) / **[RunwayML](https://runwayml.com/)** (API) | Generate footage you don't have (image→video) — see [BROLL.md](BROLL.md) |
 | Research | **yt-dlp** + Python | Pull reference videos, analyze tempo/loudness to match a vibe |
 
 ---
@@ -71,7 +72,12 @@ The loop that makes it work is **step I → J**: Claude renders, then *looks at 
 it passes. Every note I give ("meta part isn't in full", "0:22–0:25 is too slow", "make the music
 build") re-enters the same loop.
 
-Full walkthrough in **[WORKFLOW.md](WORKFLOW.md)**.
+Full walkthrough in **[WORKFLOW.md](WORKFLOW.md)**. Deep technique reference (cut craft, grading,
+audio mixing, motion) in **[TECHNIQUES.md](TECHNIQUES.md)** and **[MOTION.md](MOTION.md)**.
+Generative footage in **[BROLL.md](BROLL.md)**.
+
+Need a shot you don't have? Generate it — **Higgsfield** (in-conversation via MCP) or **RunwayML**
+(API) produce b-roll that gets normalized and folded into the same pipeline.
 
 ---
 
@@ -87,7 +93,20 @@ Full walkthrough in **[WORKFLOW.md](WORKFLOW.md)**.
 | [`transcribe.py`](scripts/transcribe.py) | ElevenLabs Scribe word-level transcript |
 | [`build_captions.py`](scripts/build_captions.py) | Kinetic captions **without libass** — PIL PNGs + `overlay` |
 | [`end_card.py`](scripts/end_card.py) | Animated end card: text + mascot fly-in → bounce → fly-away |
-| [`blur_and_mux.sh`](scripts/blur_and_mux.sh) | Blurred background + music mix + `loudnorm` |
+| [`grade.sh`](scripts/grade.sh) | ASC-CDL color grade (per-segment presets + raw filters) |
+| [`blur_and_mux.sh`](scripts/blur_and_mux.sh) | Blurred background + music mix (+ VO duck) + `loudnorm` |
+| [`gen_broll_runway.py`](scripts/gen_broll_runway.py) | AI b-roll via the RunwayML API (image→video) |
+
+### Docs
+
+| Doc | What's in it |
+|---|---|
+| [STACK.md](STACK.md) | Every tool + why |
+| [WORKFLOW.md](WORKFLOW.md) | The ask → confirm → execute → self-eval → iterate loop |
+| [TECHNIQUES.md](TECHNIQUES.md) | Cut craft · transcription · grading · audio/music/VO · captions · compositing |
+| [MOTION.md](MOTION.md) | Motion laws · easing tokens · kinetic type · engines · UI-spec-from-code · style system |
+| [BROLL.md](BROLL.md) | Generative footage — Higgsfield (MCP) & RunwayML (API) |
+| [GOTCHAS.md](GOTCHAS.md) | The traps, by area |
 
 Read **[GOTCHAS.md](GOTCHAS.md)** before you run anything — it lists the traps that cost me time
 (ffmpeg builds with no `libass`, ElevenLabs prompt ToS, `sidechaincompress` length, single-use

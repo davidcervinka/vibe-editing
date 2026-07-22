@@ -18,7 +18,7 @@ ap.add_argument("--dur", type=float, default=3.5); ap.add_argument("--fps", type
 a = ap.parse_args()
 
 W, H, N = 1920, 1080, int(a.dur * a.fps)
-IRIS, YELLOW = (25, 26, 36), (255, 231, 79)
+INK, ACCENT = (23, 24, 31), (245, 200, 75)   # near-black text, hero accent — swap for your brand
 font = ImageFont.truetype(a.font, 120)
 frames = pathlib.Path(tempfile.mkdtemp())
 
@@ -27,10 +27,10 @@ block = Image.new("RGBA", (W, H), (0, 0, 0, 0)); bd = ImageDraw.Draw(block)
 cy1, cy2 = H // 2 + 70, H // 2 + 205
 def measure(t): b = bd.textbbox((0, 0), t, font=font); return b, b[2]-b[0], b[3]-b[1]
 b1, w1, h1 = measure(a.line1); b2, w2, h2 = measure(a.line2)
-bd.text(((W-w1)//2 - b1[0], cy1 - b1[1] - h1//2), a.line1, font=font, fill=IRIS + (255,))
+bd.text(((W-w1)//2 - b1[0], cy1 - b1[1] - h1//2), a.line1, font=font, fill=INK + (255,))
 x2 = (W-w2)//2; ry = cy2 - h2//2 - b2[1] + 18
-bd.rounded_rectangle([x2-26, ry, x2+w2+26, ry+h2+30], radius=20, fill=YELLOW + (255,))
-bd.text((x2 - b2[0], cy2 - b2[1] - h2//2), a.line2, font=font, fill=IRIS + (255,))
+bd.rounded_rectangle([x2-26, ry, x2+w2+26, ry+h2+30], radius=20, fill=ACCENT + (255,))
+bd.text((x2 - b2[0], cy2 - b2[1] - h2//2), a.line2, font=font, fill=INK + (255,))
 
 masc = None
 if a.mascot:

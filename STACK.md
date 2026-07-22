@@ -46,11 +46,29 @@ Every tool involved in making these videos, and why it's there.
   compositions as components, `remotion render` to MP4. Pick whichever authoring model you prefer;
   both output a clip you fold into the ffmpeg pipeline.
 
+## AI b-roll (footage you don't have)
+
+- **[Higgsfield](https://higgsfield.ai/)** — via **MCP**, so the agent calls it in-conversation:
+  `generate_image` / `generate_video` / `motion_control` / `reframe` / `upscale_video`.
+- **[RunwayML](https://runwayml.com/)** — REST **API** (image→video, Gen-4/Gen-3) for scripted
+  pipelines → [`scripts/gen_broll_runway.py`](scripts/gen_broll_runway.py).
+- See **[BROLL.md](BROLL.md)** for the flow and how generated shots are normalized into the cut.
+
+## Audio surgery
+
+- **[Demucs](https://github.com/adefossez/demucs)** — two-stem source separation: pull a clean
+  **vocals** stem (to clone a voice from existing footage) *and* a ready-made **instrumental** bed
+  (the `no_vocals` stem) from the same clip.
+- **ffmpeg audio filters** — `silencedetect` (cut on speech gaps), `sidechaincompress` (duck),
+  `loudnorm` (master to −14 LUFS), `alimiter`, `atempo` (time-stretch a bed to fit).
+
 ## Research / matching a vibe
 
 - **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** — pull a reference video whose look/music you like.
 - **Python (`wave` / `audioop`)** — quick RMS/loudness analysis + `ffmpeg showwavespic` /
   `showspectrumpic` to read a track's build/drop structure, so a *generated* track can match it.
+- **ffmpeg `signalstats`** — luma/saturation probes for auto-grading and for finding hard
+  cuts / black frames in a source.
 
 ## Environment
 

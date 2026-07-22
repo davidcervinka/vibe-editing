@@ -36,7 +36,7 @@ for i, grp in enumerate(cues):
     bb = d.textbbox((0, 0), text, font=font, stroke_width=7)
     x = (W - (bb[2] - bb[0])) // 2 - bb[0]
     y = H - 96 - (bb[3] - bb[1]) - bb[1]                 # lower third
-    d.text((x, y), text, font=font, fill=(25, 26, 36, 255),
+    d.text((x, y), text, font=font, fill=(23, 24, 31, 255),
            stroke_width=7, stroke_fill=(255, 255, 255, 255))
     p = tmp / f"c{i:03d}.png"; img.save(p)
     overlays.append((p, grp[0]["start"] + OFFSET, grp[-1]["end"] + OFFSET))
