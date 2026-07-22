@@ -105,6 +105,7 @@ Need a shot you don't have? Generate it — **Higgsfield** (in-conversation via 
 | [WORKFLOW.md](WORKFLOW.md) | The ask → confirm → execute → self-eval → iterate loop |
 | [TECHNIQUES.md](TECHNIQUES.md) | Cut craft · transcription · grading · audio/music/VO · captions · compositing |
 | [MOTION.md](MOTION.md) | Motion laws · easing tokens · kinetic type · engines · UI-spec-from-code · style system |
+| [REFERENCES.md](REFERENCES.md) | Launch-video reference library — real films to study + archetypes/tone distilled from them |
 | [BROLL.md](BROLL.md) | Generative footage — Higgsfield (MCP) & RunwayML (API) |
 | [GOTCHAS.md](GOTCHAS.md) | The traps, by area |
 
