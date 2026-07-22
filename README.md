@@ -37,13 +37,13 @@ See **[STACK.md](STACK.md)** for the full list and *why* each tool. The short ve
 | Layer | Tool | Role |
 |---|---|---|
 | Orchestration | **Claude Code** | Reads intent, plans, runs every command, self-reviews output |
-| Editing skill | **`video-use`** skill | The conversational "ask → confirm → execute → iterate" workflow |
+| Editing skill | **[video-use](https://github.com/browser-use/video-use)** (Claude skill) | The conversational "ask → confirm → execute → iterate" workflow — **install this first** |
 | Media engine | **ffmpeg / ffprobe** | Cut, scale, split-screen, overlay, blur, fade, concat, mux |
 | Music | **ElevenLabs Music** | Original, licensing-clean background tracks (build/drop) |
 | Voiceover | **ElevenLabs TTS** (+ voice cloning) | Narration when a reel needs it |
 | Captions | **ElevenLabs Scribe** | Word-level transcription → styled subtitles |
 | Graphics | **Python + Pillow (PIL)** | End cards, captions, mascot animation, frame compositing |
-| Motion graphics | **HyperFrames** *(HTML/CSS/GSAP)* | Web-authored motion overlays — **alternative: [Remotion](https://www.remotion.dev/)** (React) |
+| Motion graphics | **[HyperFrames](https://github.com/heygen-com/hyperframes)** *(HTML/CSS/GSAP)* | Web-authored motion overlays — **alternative: [Remotion](https://www.remotion.dev/)** (React) |
 | AI b-roll | **[Higgsfield](https://higgsfield.ai/)** (MCP) / **[RunwayML](https://runwayml.com/)** (API) | Generate footage you don't have (image→video) — see [BROLL.md](BROLL.md) |
 | Research | **yt-dlp** + Python | Pull reference videos, analyze tempo/loudness to match a vibe |
 
@@ -117,19 +117,49 @@ filter labels, etc.).
 
 ## Setup
 
+This repo is the *method* + helper scripts. The two engines that do the heavy lifting —
+**video-use** (the editing skill) and **HyperFrames** (motion graphics) — are separate open-source
+projects you install first. Neither is bundled here.
+
+### 1. video-use — the editing skill (install first)
+
+The conversational editing workflow, as a Claude Code skill →
+**[github.com/browser-use/video-use](https://github.com/browser-use/video-use)**
+
 ```bash
-# 1. tools
-brew install ffmpeg yt-dlp        # macOS
-python3 -m pip install pillow requests
+# Easiest: paste this line into Claude Code and let it do the setup —
+#   "Set up https://github.com/browser-use/video-use for me."
 
-# 2. key
-cp .env.example .env              # then paste your ElevenLabs API key
-
-# 3. fonts (any you like) — the scripts default to Inter / Inter Display
-#    put a mascot/logo PNG in assets/ if your end card uses one
+# Or manually:
+git clone https://github.com/browser-use/video-use ~/Developer/video-use
+ln -sfn ~/Developer/video-use ~/.claude/skills/video-use
+cd ~/Developer/video-use && uv sync        # or: pip install -e .
 ```
 
-Everything reads paths and the API key from env / argv — no absolute paths baked in.
+### 2. HyperFrames — motion graphics (install when you need animated overlays)
+
+HTML/CSS/GSAP → deterministic MP4/WebM → **[github.com/heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)**
+(needs **Node.js 22+**). Or use **[Remotion](https://www.remotion.dev/)** instead.
+
+```bash
+# With Claude Code / agents (recommended):
+npx skills add heygen-com/hyperframes --full-depth
+# Manual CLI:
+npx hyperframes init my-video && cd my-video && npx hyperframes preview   # → npx hyperframes render
+```
+
+### 3. System tools + keys (for the scripts in this repo)
+
+```bash
+brew install ffmpeg yt-dlp                 # macOS (Linux: your package manager)
+python3 -m pip install pillow requests
+pipx install demucs                        # optional — voice cloning / stem split
+cp .env.example .env                       # then paste your ElevenLabs (and Runway) keys
+```
+
+Fonts: any you like — the scripts default to Inter / Inter Display; pass `--font path/to/Bold.ttf`.
+Drop a mascot/logo PNG in `assets/` if your end card uses one. Everything reads paths and keys from
+env / argv — no absolute paths baked in.
 
 ---
 

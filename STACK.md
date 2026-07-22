@@ -7,10 +7,11 @@ Every tool involved in making these videos, and why it's there.
 - **[Claude Code](https://claude.com/claude-code)** — the agent that reads my intent, proposes a
   plan, runs *every* command below, inspects its own output, and iterates on feedback. Nothing here
   is a fixed template; it's assembled per-video from a conversation.
-- **The `video-use` skill** — a Claude skill that encodes the editing discipline: *inventory → ask →
-  confirm the plan in plain English → execute → self-evaluate → iterate → persist*. It also carries
-  the "hard rules" (captions applied last, per-segment extract before concat, audio fades at cuts,
-  cache transcripts, etc.).
+- **The [video-use](https://github.com/browser-use/video-use) skill** — a Claude skill (install it
+  first) that encodes the editing discipline: *inventory → ask → confirm the plan in plain English →
+  execute → self-evaluate → iterate → persist*. It carries the "hard rules" (captions applied last,
+  per-segment extract before concat, audio fades at cuts, cache transcripts, etc.) and its own
+  helpers (transcribe / grade / render / timeline-view). Needs ffmpeg + an ElevenLabs key.
 
 ## Media engine
 
@@ -41,7 +42,9 @@ Every tool involved in making these videos, and why it's there.
 
 ## Motion graphics (optional, for richer overlays)
 
-- **HyperFrames** — author motion as HTML/CSS/GSAP, render deterministically to MP4/WebM.
+- **[HyperFrames](https://github.com/heygen-com/hyperframes)** — author motion as HTML/CSS/GSAP,
+  render deterministically to MP4/WebM (alpha). Apache-2.0, needs Node.js 22+ and FFmpeg. Install:
+  `npx skills add heygen-com/hyperframes --full-depth` (agents) or `npx hyperframes init`.
 - **[Remotion](https://www.remotion.dev/)** — the **React alternative** to HyperFrames. Write
   compositions as components, `remotion render` to MP4. Pick whichever authoring model you prefer;
   both output a clip you fold into the ffmpeg pipeline.

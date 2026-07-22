@@ -92,7 +92,7 @@ determinism — seed it or precompute).
 
 | Engine | Use when |
 |---|---|
-| **HyperFrames** (HTML/CSS/GSAP → deterministic capture) | **Default.** Paste real product HTML/CSS and animate it; agent-driven; no build step; alpha overlays. |
+| **[HyperFrames](https://github.com/heygen-com/hyperframes)** (HTML/CSS/GSAP → deterministic capture) | **Default.** Paste real product HTML/CSS and animate it; agent-driven; no build step; alpha overlays. Apache-2.0, Node 22+. |
 | **[Remotion](https://www.remotion.dev/)** (React/TSX) | You already have a React codebase/component library to reuse, or want its Lambda distributed rendering. |
 | **PIL / NumPy PNG sequence** | Deterministic static plates, procedural backgrounds, or simple per-frame cards (counters, typewriter, bar reveals) with no browser. |
 | **Manim** | Formal diagrams, equations, graph morphs. |
