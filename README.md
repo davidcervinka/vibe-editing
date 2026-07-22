@@ -18,7 +18,9 @@ This repo documents the **stack** and the **flow** so you can reproduce it. It s
 
 ## The result
 
-A ~30s LinkedIn reel built entirely through conversation:
+A ~30s reel built entirely through conversation:
+
+![demo](demo.gif)
 
 - a 2×2 **split-screen** hero of four product-motion clips
 - a **"type a request → the dashboard builds itself"** beat
@@ -26,7 +28,7 @@ A ~30s LinkedIn reel built entirely through conversation:
 - an original **music bed** with a real build/drop
 - a blurred **end card** with a mascot that flies in, bounces, and flies away
 
-*(Add your own `demo.gif` / `demo.mp4` here.)*
+> The clip above shows a real product being edited — swap in your own reel/footage.
 
 ---
 
