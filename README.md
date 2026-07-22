@@ -1,34 +1,37 @@
-# 🎬 Editing product videos by *talking* to Claude Code
+# 🎬 vibe-editing
 
-No timeline. No editor UI. No keyframes by hand.
+**Vibe coding, but for video.** I don't open a video editor anymore — I talk to
+[Claude Code](https://claude.com/claude-code).
 
-I describe the edit in plain English — *"cut these four clips into a split-screen, build the
-Pulse dashboard reveal, add music that builds and drops, put a 'Built with Claude Code' card at
-the end that flies away"* — and [Claude Code](https://claude.com/claude-code) drives **ffmpeg**,
-**ElevenLabs**, and a little **Python/Pillow** to actually cut, score, caption, animate, and render
-the video. Then it samples frames from its own output, checks the audio, and fixes what's wrong
-before showing me.
+No timeline. No keyframes. No editor UI. I describe the video in plain English — the cut, the
+pacing, the music, the captions, the motion — and Claude Code drives **ffmpeg**, **ElevenLabs**,
+**HyperFrames**, and a little **Python/Pillow** to cut, score, caption, animate, and render it.
+Then it samples frames from its own output, checks the audio, and fixes what's wrong before
+showing me.
 
-This repo documents the **stack** and the **flow** so you can reproduce it. It ships the
-(generalized) scripts — not my source footage or brand assets.
+And not just short clips — this flow ships **any kind of video**:
 
-> ⚠️ This is a *method* repo. It contains no video/audio assets. Drop your own clips in and go.
-
----
-
-## The result
-
-A ~30s reel built entirely through conversation:
+| | Example (real, published) | Kind |
+|---|---|---|
+| 🚀 | [Build Live Dashboards in Seconds](https://youtu.be/cabvIEcUqtk) | Full **product launch film** — VO, music, motion graphics |
+| 🎪 | [Hackathon Aftermovie — Prague Builder Day](https://youtu.be/37AsBM02eNI) | **Event aftermovie** — interviews, montage, music-driven cut |
+| 🧑‍💻 | [MCP & CLI](https://youtu.be/QxL-jAuKGU8) | **Feature walkthrough** — screen capture + kinetic type |
+| 📱 | the reel below ↓ | ~30s **social reel** — split-screen, beat cuts, animated end card |
 
 ![demo](demo.gif)
 
+That reel was built entirely through conversation:
+
 - a 2×2 **split-screen** hero of four product-motion clips
 - a **"type a request → the dashboard builds itself"** beat
-- kinetic **captions** burned in for silent autoplay
 - an original **music bed** with a real build/drop
 - a blurred **end card** with a mascot that flies in, bounces, and flies away
 
-> The clip above shows a real product being edited — swap in your own reel/footage.
+This repo documents the **stack** and the **flow** so you can reproduce it — for launch films,
+aftermovies, walkthroughs, reels, motion pieces, whatever. It ships the (generalized) scripts —
+not source footage or brand assets.
+
+> ⚠️ Method repo: no video/audio assets inside. Drop your own clips in and go.
 
 ---
 
