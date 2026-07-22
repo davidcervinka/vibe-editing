@@ -27,3 +27,6 @@ __pycache__/
 *.pyc
 node_modules/
 .DS_Store
+
+# local social-preview workspace (contains machine-specific paths)
+social/
