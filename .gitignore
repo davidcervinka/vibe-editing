@@ -1,0 +1,29 @@
+# secrets
+.env
+
+# media & renders (this is a method repo — no assets)
+*.mp4
+*.mov
+*.webm
+*.mp3
+*.wav
+*.m4a
+*.aac
+
+# frame sequences / scratch
+*_frames/
+frames/
+edit/
+ref/
+verify/
+tmp/
+*.png
+*.jpg
+*.jpeg
+!docs/**/*.png    # keep any diagram/screenshot images you deliberately add under docs/
+
+# python / node
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store

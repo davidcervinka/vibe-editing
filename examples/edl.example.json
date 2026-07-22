@@ -1,0 +1,25 @@
+{
+  "note": "An EDL (edit decision list) is just the plan as data — which source, which window, in what order. Claude produces one of these before touching the cut, then the scripts render from it.",
+  "output": { "width": 1920, "height": 1080, "fps": 30 },
+  "sources": {
+    "A": "raw/clip_a.mp4",
+    "B": "raw/clip_b.mp4",
+    "C": "raw/clip_c.mp4",
+    "D": "raw/clip_d.mp4"
+  },
+  "timeline": [
+    { "beat": "quad_hero",   "type": "quad", "duration": 3.0,
+      "cells": [["A", 2.5], ["B", 2.5], ["C", 4.0], ["D", 8.5]] },
+    { "beat": "type_request","type": "clip", "source": "A", "start": 2.2, "end": 12.8,
+      "reason": "type a request -> the dashboard builds itself" },
+    { "beat": "glide_card",  "type": "clip", "source": "B", "start": 4.0, "end": 7.9 },
+    { "beat": "product_hero","type": "clip", "source": "D", "start": 11.6, "end": 14.1 },
+    { "beat": "quad_reprise","type": "quad", "duration": 3.0,
+      "cells": [["A", 11.0], ["B", 5.0], ["C", 8.0], ["D", 10.4]] },
+    { "beat": "end_card",    "type": "endcard", "duration": 3.5,
+      "line1": "Built with", "line2": "Claude Code", "mascot": "assets/mascot.png",
+      "background": "blurred_quad", "exit": "fly_away_to_white" }
+  ],
+  "audio": { "music": "audio/track.mp3", "loudnorm": "I=-14:TP=-1.5:LRA=11" },
+  "captions": { "from": "voiceover", "style": "dark-text-white-outline", "chunk_words": 3 }
+}
