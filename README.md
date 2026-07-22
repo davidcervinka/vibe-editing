@@ -84,6 +84,13 @@ Generative footage in **[BROLL.md](BROLL.md)**.
 Need a shot you don't have? Generate it — **Higgsfield** (in-conversation via MCP) or **RunwayML**
 (API) produce b-roll that gets normalized and folded into the same pipeline.
 
+> 💡 **Pro tip — point Claude Code straight at your product's codebase.** The most faithful product
+> visuals don't come from screenshots: give Claude Code access to your product repo / design-system
+> source and it pulls the **real UI elements** — resolved design tokens (colors, type scale, radii),
+> component anatomy, actual icon SVGs, even real copy strings — and rebuilds the UI as a
+> pixel-faithful *animated* mock. Motion you could never screen-record, with zero brand drift.
+> How-to: [MOTION.md → UI-spec-from-code](MOTION.md#ui-spec-from-code-faithful-animated-product-mock).
+
 ---
 
 ## What's in `scripts/`

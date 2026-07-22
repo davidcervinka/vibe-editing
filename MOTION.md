@@ -129,7 +129,9 @@ Encode with dense keyframes `-g 30 -keyint_min 30` so downstream seeks stay fram
 
 ## UI-spec-from-code (faithful animated product mock)
 
-Don't invent a fake UI — read the product's **real source** and reproduce resolved values:
+Don't invent a fake UI — **point Claude Code directly at your product's codebase** (the repo, the
+design-system package, the component library) and let it read the **real source**. It lifts the UI
+elements straight from there and reproduces resolved values:
 
 1. Extract resolved theme hexes (page/card/border/text/button/accent) and the **type scale** as real
    tokens (role → rem/weight/line-height), radii (`6/8/12/16/full`), spacing.
